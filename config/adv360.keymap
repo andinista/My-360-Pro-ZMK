@@ -29,14 +29,55 @@
             bindings = <&kp>, <&kp>;
         };
 
-        space: space {
+        hmsft: homerow_mods_shift {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPACE";
+            label = "HOMEROW_MODS";
             #binding-cells = <2>;
+            tapping-term-ms = <160>; //Orig 200
+            quick_tap_ms = <150>; // Orig: 175
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        //
+        // Thumb cluster hold-tap keys for Miryoku layers
+        //
+        thumb: thumb_layer_access {
+            compatible = "zmk,behavior-hold-tap";
+            flavor = THUMB_HOLDING_TYPE;
             tapping-term-ms = <200>;
-            quick_tap_ms = <175>;
-            flavor = "balanced";
+            quick-tap-ms = <175>; // enable repeat
+            #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
+        };
+
+        space: thumb_layer_access_spacebar {
+            compatible = "zmk,behavior-hold-tap";
+            flavor = SPACE_HOLDING_TYPE;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>; // enable repeat
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        //
+        // Shift + LEFT_PARENTHESIS = LESS_THAN
+        //
+        parang_left: left_parenthesis_and_less_than {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR>, <&kp LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        //
+        // Shift + RIGHT_PARENTHESIS = GREATER_THAN
+        //
+        parang_right: right_parenthesis_and_greater_than {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RPAR>, <&kp GT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
