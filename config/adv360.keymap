@@ -31,7 +31,7 @@
 
         hmsft: homerow_mods_shift {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "HOMEROW_MODS_SHIFT";
             #binding-cells = <2>;
             tapping-term-ms = <160>; //Orig 200
             quick_tap_ms = <150>; // Orig: 175
